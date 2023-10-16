@@ -64,3 +64,8 @@ void Email::validateEmail(const std::string& email) {
     if (hasDuplicatedDots(name) || hasDuplicatedDots(domain)) 
         throw std::invalid_argument("EMAIL TEM DOIS PONTOS SEGUIDOS");
 }
+
+void Email::setEmail(const std::string& emailInput) {
+    validateEmail(emailInput);
+    this->user_email = emailInput;
+}

@@ -20,6 +20,7 @@ class Email {
 
         Email(std::string email) : user_email(email) {}
         void validateEmail(const std::string&);
+        void setEmail(const std::string&);
         std::string getEmail() const;
 };
 

@@ -15,7 +15,7 @@ void testEmail::tearDown(){
 
 void testEmail::testSettings(){
     try{
-        email->validateEmail(user_email);
+        email->setEmail(user_email);
     } catch (const std::invalid_argument& e) {
         estado = FALHA;
     }
