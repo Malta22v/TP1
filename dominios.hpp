@@ -14,6 +14,8 @@ class Email {
         static const int DOMAIN_LIMIT_MIN;
         std::string user_email;
         std::pair<std::string, std::string> splitEmail(const std::string&);
+        bool hasInvalidCharacter(const std::string&);
+        bool hasDuplicatedDots(const std::string&);
     public:
 
         Email(std::string email) : user_email(email) {}

@@ -4,7 +4,7 @@
 #include <vector>
 
 std::vector<std::string> listEmails = {
-    "email_teste@gmail.com", "batata@gmail.com"
+    "email_teste@gmail.com", "batata@gmail.com", "que_ijo@quente.com"
     };
 
 int main() {
