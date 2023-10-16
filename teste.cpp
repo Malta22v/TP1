@@ -2,6 +2,7 @@
 #include "teste.hpp"
 #include <stdexcept>
 #include <string>
+#include <iostream>
 
 
 void testEmail::setUp(){
@@ -22,6 +23,32 @@ void testEmail::testSettings(){
 }
 
 int testEmail::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}
+
+
+void testPassword::setUp(){
+    password = new Password();
+    estado = SUCESSO;
+}
+
+void testPassword::tearDown(){
+    delete password;
+}
+
+void testPassword::testSettings(){
+    try{
+        password->setPassword(user_password);
+    } catch (const std::invalid_argument& e) {
+        // std::cout << e.what() << " ";
+        estado = FALHA;
+    }
+}
+
+int testPassword::run(){
     setUp();
     testSettings();
     tearDown();
