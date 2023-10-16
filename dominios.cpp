@@ -12,7 +12,7 @@ inline std::string Email::getEmail() const {
     return user_email;
 }
 
-std::pair<std::string, std::string> Email::splitEmail(const std::string&email) {
+std::pair<std::string, std::string> Email::splitEmail(const std::string& email) {
     size_t pos = email.find('@');
     std::string name = email.substr(0, pos);
     std::string domain = email.substr(pos + 1);
