@@ -14,9 +14,9 @@ int main() {
         testEmail testeA(email);
 
         switch(testeA.run()){
-            case testEmail::SUCESSO: std::cout << "SUCESSO - EMAIL: " << testeA.getEmail() << std::endl;
+            case testEmail::SUCESSO: std::cout << "SUCESSO - EMAIL: " << testeA.getEmailTested() << std::endl;
                                     break;
-            case testEmail::FALHA  : std::cout << "FALHA   - EMAIL: " << testeA.getEmail() << std::endl;
+            case testEmail::FALHA  : std::cout << "FALHA   - EMAIL: " << testeA.getEmailTested() << std::endl;
                                     break;
         }
 

@@ -8,9 +8,6 @@ const int Email::NAME_LIMIT_MIN = 2;
 const int Email::DOMAIN_LIMIT_MAX = 20;
 const int Email::DOMAIN_LIMIT_MIN = 2;
 
-inline std::string Email::getEmail() const {
-    return user_email;
-}
 
 std::pair<std::string, std::string> Email::splitEmail(const std::string& email) {
     size_t pos = email.find('@');

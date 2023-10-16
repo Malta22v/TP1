@@ -16,10 +16,10 @@ public:
     testEmail(const std::string& email) : user_email(email) {}
     const static int SUCESSO =  0;         
     const static int FALHA   = -1;         
-    std::string getEmail();                            
+    std::string getEmailTested();                            
     int run();                             
 };
 
-inline std::string testEmail::getEmail(){
+inline std::string testEmail::getEmailTested(){
     return user_email;
 }

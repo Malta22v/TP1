@@ -5,7 +5,7 @@
 
 
 void testEmail::setUp(){
-    email = new Email(user_email);
+    email = new Email();
     estado = SUCESSO;
 }
 

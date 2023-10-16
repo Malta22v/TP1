@@ -16,12 +16,15 @@ class Email {
         std::pair<std::string, std::string> splitEmail(const std::string&);
         bool hasInvalidCharacter(const std::string&);
         bool hasDuplicatedDots(const std::string&);
-    public:
-
-        Email(std::string email) : user_email(email) {}
         void validateEmail(const std::string&);
+
+    public:
         void setEmail(const std::string&);
         std::string getEmail() const;
 };
+
+inline std::string Email::getEmail() const {
+    return user_email;
+}
 
 #endif
