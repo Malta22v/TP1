@@ -40,4 +40,20 @@ class Password {
         std::string getPassword() const;
 
 };
+
+class Text {
+    private:
+        static const int TEXT_LIMIT_MAX;
+        static const int TEXT_LIMIT_MIN;
+        std::string user_text;
+        bool hasInvalidChar(const std::string&, const std::string&);
+        bool hasConsecultivesSpaces(const std::string&);
+        bool hasConsecutivePunctuations(const std::string&);
+        bool isFirstCharUpper(const std::string&);
+        bool isFirstCharAfterPunctuationUpper(const std::string&);
+        void validateText(const std::string&);
+    public:
+        void setText(const std::string&);
+        std::string getText() const;
+};
 #endif

@@ -45,3 +45,24 @@ public:
 inline std::string testPassword::getPasswordTested(){
     return user_password;
 }
+
+class testText {
+private:  
+    Text *text;
+    std::string user_text;                         
+    int estado;
+    void setUp();    
+    void tearDown(); 
+    void testSettings();  
+
+public:
+    testText(const std::string& text) : user_text(text) {}
+    const static int SUCESSO =  0;         
+    const static int FALHA   = -1;         
+    std::string getTextTested();                            
+    int run();                             
+};
+
+inline std::string testText::getTextTested(){
+    return user_text;
+}

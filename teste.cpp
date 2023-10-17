@@ -54,3 +54,28 @@ int testPassword::run(){
     tearDown();
     return estado;
 }
+
+void testText::setUp(){
+    text = new Text();
+    estado = SUCESSO;
+}
+
+void testText::tearDown(){
+    delete text;
+}
+
+void testText::testSettings(){
+    try{
+        text->setText(user_text);
+    } catch (const std::invalid_argument& e) {
+        std::cout << e.what() << " ";
+        estado = FALHA;
+    }
+}
+
+int testText::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}

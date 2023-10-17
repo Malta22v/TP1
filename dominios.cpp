@@ -8,7 +8,7 @@ struct ValidCharacters {
     std::string lowercase;
     std::string highercase;
     std::string numbers;
-    std::string commas;
+    std::string punctuation;
 };
 
 const int Email::NAME_LIMIT_MAX = 10;
@@ -104,7 +104,7 @@ void Password::validatePassword(const std::string& password){
     validChar.lowercase = "abcdefghijklmnopqrstuvwxyz";
     validChar.highercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     validChar.numbers = "0123456789";
-    validChar.commas = ".,;?!";
+    validChar.punctuation = ".,;?!";
 
     if (password.size() != PASSWORD_LENGHT) 
         errors += "SENHA NAO TEM 5 CARACTERES\n";
@@ -118,7 +118,7 @@ void Password::validatePassword(const std::string& password){
     if (!(isThereThisTypeChar(password, validChar.numbers))) 
         errors += "SENHA NAO HA NUMEROS\n";
     
-    if (!(isThereThisTypeChar(password, validChar.commas))) 
+    if (!(isThereThisTypeChar(password, validChar.punctuation))) 
         errors += "SENHA NAO HA PONTOS\n";
 
     if (isThereRepetitiveChar(password))
@@ -132,4 +132,86 @@ void Password::validatePassword(const std::string& password){
 void Password::setPassword(const std::string& passwordInput) {
     validatePassword(passwordInput);
     this->user_password = passwordInput;
+}
+
+const int Text::TEXT_LIMIT_MAX = 30;
+const int Text::TEXT_LIMIT_MIN = 5;
+
+bool Text::hasInvalidChar(const std::string& text, const std::string& valid_chars) {
+    for (auto& c : text) {
+        if (text.find(c) == std::string::npos) return true; 
+    }
+    return false;
+}
+
+bool Text::hasConsecultivesSpaces(const std::string& text) {
+    for (size_t i = 1; i < text.size(); i++) {
+        if (text[i - 1] ==  ' ' && text[i] == ' ') return true;
+    }
+    return false;
+}
+
+bool Text::hasConsecutivePunctuations(const std::string& text) {
+    for (size_t i = 1; i < text.size(); i++) {
+        if (std::ispunct(text[i - 1]) && std::ispunct(text[i])) return true;
+    }
+    return false;
+}
+
+bool Text::isFirstCharUpper(const std::string& text) {
+    if (!text.empty() && std::isupper(text[0])) return true; 
+    return false;
+}
+
+bool Text::isFirstCharAfterPunctuationUpper(const std::string& text) {
+    bool foundPunctuation = false;
+    for (char c : text) {
+
+        if(foundPunctuation == true) {
+            if(std::isalpha(c) && (!std::isupper(c) || std::isdigit(c))) return false;
+            foundPunctuation = false;
+        }
+
+        if (std::ispunct(c) && (c != ',' || c != ';')) foundPunctuation = true;
+    }
+    return true;
+}
+
+void Text::validateText(const std::string& text) {
+    std::string errors;
+    ValidCharacters validChar;
+    validChar.lowercase = "abcdefghijklmnopqrstuvwxyz";
+    validChar.highercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    validChar.numbers = "0123456789";
+    validChar.punctuation = ".,;?!";
+
+    std::string all_valid_char = 
+            validChar.lowercase + validChar.highercase + validChar.numbers + validChar.punctuation + " ";
+
+    if(text.size() > TEXT_LIMIT_MAX || text.size() < TEXT_LIMIT_MIN)    
+        errors += "TEXTO COM TAMANHO INVALIDADO\n";
+    
+    if(hasInvalidChar(text, all_valid_char))
+        errors += "TEXTO COM CARACTER INVALIDO\n";
+
+    if(hasConsecultivesSpaces(text))
+        errors += "TEXTO COM DUPLO ESPAÇO BRANCO JUNTOS\n";
+
+    if(hasConsecutivePunctuations(text))
+        errors += "TEXTO TEM DOIS SINAIS OU MAIS DE PONTUAÇÃO JUNTOS\n";
+
+    if(!(isFirstCharUpper(text)))
+        errors += "TEXTO NAO COMEÇA COM MAISCULO\n";
+
+    if(!(isFirstCharAfterPunctuationUpper(text)))
+        errors += "TEXTO NAO TEM MAISCULO DEPOIS DE PONTUACAO\n";
+
+    if(!errors.empty()) {
+        throw std::invalid_argument(errors);
+    }
+}
+
+void Text::setText(const std::string& textInput) {
+    validateText(textInput);
+    this->user_text = textInput;
 }
