@@ -91,4 +91,17 @@ inline std::string Code::getValue() const {
     return user_code;
 }
 
+class Column {
+    private:
+        std::string user_column;
+        void validateColumn(const std::string&);
+    public:
+        void setValue(const std::string&);
+        std::string getValue() const;
+};
+
+inline std::string Column::getValue() const {
+    return user_column;
+}
+
 #endif

@@ -255,3 +255,13 @@ void Code::setValue(const std::string& codeInput) {
     validateCode(codeInput);
     this->user_code = codeInput;
 }
+
+void Column::validateColumn(const std::string& column) {
+    if (column != "SOLICITADO" && column != "EM EXECUCAO" && column != "CONCLUIDO")
+        throw std::invalid_argument("COLUNA DEVE SER: SOLICITADO, EM EXECUCAO, CONCLUIDO");
+}
+
+void Column::setValue(const std::string& columnInput) {
+    validateColumn(columnInput);
+    this->user_column = columnInput;
+}

@@ -110,6 +110,27 @@ inline std::string testCode::getCodeTested(){
     return user_code;
 }
 
+class testColumn {
+private:  
+    Column *column;
+    std::string user_column;                         
+    int estado;
+    void setUp();    
+    void tearDown(); 
+    void testSettings();  
+
+public:
+    testColumn(const std::string column) : user_column(column) {}
+    const static int SUCESSO =  0;         
+    const static int FALHA   = -1;         
+    std::string getColumnTested();                            
+    int run();                             
+};
+
+inline std::string testColumn::getColumnTested(){
+    return user_column;
+}
+
 class TUAccount {
 private:
     std::string user_email;

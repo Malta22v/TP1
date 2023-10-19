@@ -124,6 +124,31 @@ void testCode::testSettings(){
     }
 }
 
+int testColumn::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}
+
+void testColumn::setUp(){
+    column = new Column();
+    estado = SUCESSO;
+}
+
+void testColumn::tearDown(){
+    delete column;
+}
+
+void testColumn::testSettings(){
+    try{
+        column->setValue(user_column);
+    } catch (const std::invalid_argument& e) {
+        // std::cout << e.what() << " ";
+        estado = FALHA;
+    }
+}
+
 int testCode::run(){
     setUp();
     testSettings();

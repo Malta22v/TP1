@@ -25,6 +25,10 @@ std::vector<std::string> listCode= {
     "DD92", "CE23", "DO86", "Dx23", "DBd2", "Gh2L"
 };
 
+std::vector<std::string> listColumn= {
+    "SOLICITADO", "EM EXECUCAO", "CONCLUIDO", "solicitado", "em execucao", "concluido"
+};
+
 TUAccount Account1("joao@gmail.com", "Joao Victor", "3;bEd");
 TUAccount Account2("marcos@gmail.com", "Marcos", "3Ee;2");
 
@@ -100,6 +104,19 @@ int main() {
 
     }
 
+    std::cout << "\n";
+
+    for (const auto& column : listColumn) {
+        testColumn testeF(column);
+
+        switch(testeF.run()){
+            case testColumn::SUCESSO: std::cout << "SUCESSO - SENHA: " << testeF.getColumnTested() << std::endl;
+                                    break;
+            case testColumn::FALHA  : std::cout << "FALHA   - SENHA: " << testeF.getColumnTested() << std::endl;
+                                    break;
+        }
+
+    }
     std::cout << "\n";
 
     switch(Account1.run()){
