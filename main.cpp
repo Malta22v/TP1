@@ -14,8 +14,15 @@ std::vector<std::string> listPasswords = {
 
 std::vector<std::string> listText = {
     "Isso e um texto, legal", "Fazer classe entidade", "Refazer tudo! agora", 
-    "novo card Kanbam", "Refatorar..."
+    "novo card Kanbam", "Refatorar...", "Testar.codigo"
 };
+
+TUAccount Account1("joao@gmail.com", "Joao Victor", "3;bEd");
+TUAccount Account2("marcos@gmail.com", "Marcos", "3Ee;2");
+TUAccount Account3("elen.@gmail.com", "ELL$n", "Asj2ba");
+
+std::vector<TUAccount> listAccounts = { Account1, Account2, Account3 };
+
 
 int main() {
 
@@ -58,5 +65,22 @@ int main() {
         }
 
     }
+
+    std::cout << "\n";
+
+    switch(Account1.run()){
+        case TUAccount::SUCESSO: std::cout << "SUCESSO - CONTA: " << Account1.getAccountTested() << std::endl;
+                                break;
+        case TUAccount::FALHA  : std::cout << "FALHA   - CONTA" << std::endl;
+                                break;
+    }
+
+    switch(Account2.run()){
+        case TUAccount::SUCESSO: std::cout << "SUCESSO - CONTA: " << Account2.getAccountTested() << std::endl;
+                                break;
+        case TUAccount::FALHA  : std::cout << "FALHA   - CONTA" << std::endl;
+                                break;
+    }
+
     return 0;
 }

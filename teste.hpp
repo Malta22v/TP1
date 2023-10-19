@@ -1,4 +1,5 @@
 #include "dominios.hpp"
+#include "entidades.hpp"
 #include <stdexcept>
 #include <string>
 #include <array>
@@ -65,4 +66,35 @@ public:
 
 inline std::string testText::getTextTested(){
     return user_text;
+}
+
+class TUAccount {
+private:
+    std::string user_email;
+    std::string user_name;
+    std::string user_password;
+
+    Account *account;
+    int estado;
+    void setUp();    
+    void tearDown(); 
+    void testSettings();  
+
+public:
+    TUAccount(
+        const std::string email, 
+        const std::string name, 
+        const std::string password) :         
+        user_email(email), user_name(name), user_password(password)
+        {}
+
+    const static int SUCESSO =  0;         
+    const static int FALHA   = -1;         
+    std::string getAccountTested() const;                            
+    int run();  
+};
+
+inline std::string TUAccount::getAccountTested() const{
+    std::string text = "Conta com EMAIL: " + user_email + " NOME: " + user_name + " SENHA: " + user_password;
+    return text;
 }

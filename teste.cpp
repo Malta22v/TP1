@@ -1,5 +1,6 @@
 #include "dominios.hpp"
 #include "teste.hpp"
+#include "entidades.hpp"
 #include <stdexcept>
 #include <string>
 #include <iostream>
@@ -16,7 +17,7 @@ void testEmail::tearDown(){
 
 void testEmail::testSettings(){
     try{
-        email->setEmail(user_email);
+        email->setValue(user_email);
     } catch (const std::invalid_argument& e) {
         estado = FALHA;
     }
@@ -41,7 +42,7 @@ void testPassword::tearDown(){
 
 void testPassword::testSettings(){
     try{
-        password->setPassword(user_password);
+        password->setValue(user_password);
     } catch (const std::invalid_argument& e) {
         // std::cout << e.what() << " ";
         estado = FALHA;
@@ -66,9 +67,9 @@ void testText::tearDown(){
 
 void testText::testSettings(){
     try{
-        text->setText(user_text);
+        text->setValue(user_text);
     } catch (const std::invalid_argument& e) {
-        std::cout << e.what() << " ";
+        // std::cout << e.what() << " ";
         estado = FALHA;
     }
 }
@@ -79,3 +80,40 @@ int testText::run(){
     tearDown();
     return estado;
 }
+
+
+void TUAccount::setUp(){
+    account = new Account();
+    estado = SUCESSO;
+}
+
+void TUAccount::tearDown(){
+    delete account;
+}
+
+void TUAccount::testSettings(){
+
+    Email email;
+    Text name;
+    Password password;
+
+    email.setValue(user_email);
+    name.setValue(user_name);
+    password.setValue(user_password);
+
+    account->setEmail(email);
+    account->setName(name);
+    account->setPassword(password);
+
+    if( account->getEmail() != user_email ||
+        account->getName() != user_name ||
+        account->getPassword() != user_password) {estado = FALHA;}
+}
+
+int TUAccount::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}
+

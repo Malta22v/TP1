@@ -19,11 +19,11 @@ class Email {
         void validateEmail(const std::string&);
 
     public:
-        void setEmail(const std::string&);
-        std::string getEmail() const;
+        void setValue(const std::string&);
+        std::string getValue() const;
 };
 
-inline std::string Email::getEmail() const {
+inline std::string Email::getValue() const {
     return user_email;
 }
 
@@ -36,10 +36,12 @@ class Password {
         bool isThereRepetitiveChar(const std::string&);
         void validatePassword(const std::string&);
     public:
-        void setPassword(const std::string&);
-        std::string getPassword() const;
-
+        void setValue(const std::string&);
+        std::string getValue() const;
 };
+inline std::string Password::getValue() const {
+    return user_password;
+}
 
 class Text {
     private:
@@ -53,7 +55,11 @@ class Text {
         bool isFirstCharAfterPunctuationUpper(const std::string&);
         void validateText(const std::string&);
     public:
-        void setText(const std::string&);
-        std::string getText() const;
+        void setValue(const std::string&);
+        std::string getValue() const;
 };
+
+inline std::string Text::getValue() const {
+    return user_text;
+}
 #endif

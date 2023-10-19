@@ -75,7 +75,7 @@ void Email::validateEmail(const std::string& email) {
     }
 }
 
-void Email::setEmail(const std::string& emailInput) {
+void Email::setValue(const std::string& emailInput) {
     validateEmail(emailInput);
     this->user_email = emailInput;
 }
@@ -129,7 +129,7 @@ void Password::validatePassword(const std::string& password){
     }
 }
 
-void Password::setPassword(const std::string& passwordInput) {
+void Password::setValue(const std::string& passwordInput) {
     validatePassword(passwordInput);
     this->user_password = passwordInput;
 }
@@ -211,7 +211,7 @@ void Text::validateText(const std::string& text) {
     }
 }
 
-void Text::setText(const std::string& textInput) {
+void Text::setValue(const std::string& textInput) {
     validateText(textInput);
     this->user_text = textInput;
 }
