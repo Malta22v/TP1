@@ -68,6 +68,27 @@ inline std::string testText::getTextTested(){
     return user_text;
 }
 
+class testLimit {
+private:  
+    Limit *limit;
+    int user_limit;                         
+    int estado;
+    void setUp();    
+    void tearDown(); 
+    void testSettings();  
+
+public:
+    testLimit(const int limit) : user_limit(limit) {}
+    const static int SUCESSO =  0;         
+    const static int FALHA   = -1;         
+    int getLimitTested();                            
+    int run();                             
+};
+
+inline int testLimit::getLimitTested(){
+    return user_limit;
+}
+
 class TUAccount {
 private:
     std::string user_email;

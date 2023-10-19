@@ -215,3 +215,15 @@ void Text::setValue(const std::string& textInput) {
     validateText(textInput);
     this->user_text = textInput;
 }
+
+
+void Limit::validateLimit(const int value){
+    if (value != 5 && value != 10 && value != 15 && value != 20)
+        throw std::invalid_argument("LIMITE TEM QUE SER 5, 10, 15, 20");
+  
+}
+
+void Limit::setValue(const int valueInput){
+    validateLimit(valueInput);
+    this->user_limit = valueInput;
+}

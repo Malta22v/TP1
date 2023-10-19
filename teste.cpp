@@ -81,6 +81,31 @@ int testText::run(){
     return estado;
 }
 
+void testLimit::setUp(){
+    limit = new Limit();
+    estado = SUCESSO;
+}
+
+void testLimit::tearDown(){
+    delete limit;
+}
+
+void testLimit::testSettings(){
+    try{
+        limit->setValue(user_limit);
+    } catch (const std::invalid_argument& e) {
+        // std::cout << e.what() << " ";
+        estado = FALHA;
+    }
+}
+
+int testLimit::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}
+
 
 void TUAccount::setUp(){
     account = new Account();

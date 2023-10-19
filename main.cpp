@@ -17,11 +17,13 @@ std::vector<std::string> listText = {
     "novo card Kanbam", "Refatorar...", "Testar.codigo"
 };
 
+std::vector<int> listLimit = {
+    5, 10, 15, 20, 2, 3, 6, 11, 14
+};
+
 TUAccount Account1("joao@gmail.com", "Joao Victor", "3;bEd");
 TUAccount Account2("marcos@gmail.com", "Marcos", "3Ee;2");
-TUAccount Account3("elen.@gmail.com", "ELL$n", "Asj2ba");
 
-std::vector<TUAccount> listAccounts = { Account1, Account2, Account3 };
 
 
 int main() {
@@ -61,6 +63,20 @@ int main() {
             case testText::SUCESSO: std::cout << "SUCESSO - TEXTO: " << testeC.getTextTested() << std::endl;
                                     break;
             case testText::FALHA  : std::cout << "FALHA   - TEXTO: " << testeC.getTextTested() << std::endl;
+                                    break;
+        }
+
+    }
+
+    std::cout << "\n";
+
+    for (const auto& limit : listLimit) {
+        testLimit testeD(limit);
+
+        switch(testeD.run()){
+            case testLimit::SUCESSO: std::cout << "SUCESSO - LIMITE: " << testeD.getLimitTested() << std::endl;
+                                    break;
+            case testLimit::FALHA  : std::cout << "FALHA   - LIMITE: " << testeD.getLimitTested() << std::endl;
                                     break;
         }
 

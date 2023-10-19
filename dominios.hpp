@@ -62,4 +62,18 @@ class Text {
 inline std::string Text::getValue() const {
     return user_text;
 }
+
+class Limit{
+    private:
+        int user_limit;                      // Atributo para armazenar valor.
+        void validateLimit(const int);              // Método para validar valor.
+    public:
+        void setValue(const int);             // Método para atribuir valor.
+        int getValue() const;          // Método para recuperar valor.
+};
+
+inline int Limit::getValue() const {
+    return user_limit;
+}
+
 #endif
