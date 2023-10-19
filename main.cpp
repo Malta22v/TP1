@@ -32,6 +32,9 @@ std::vector<std::string> listColumn= {
 TUAccount Account1("joao@gmail.com", "Joao Victor", "3;bEd");
 TUAccount Account2("marcos@gmail.com", "Marcos", "3Ee;2");
 
+TUBoard Board1("DD92", "Joao Victor", "Kanbam abc", 5);
+TUBoard Board2("CE23", "Marcos", "Fazer template", 15);
+
 
 
 int main() {
@@ -128,6 +131,22 @@ int main() {
 
     switch(Account2.run()){
         case TUAccount::SUCESSO: std::cout << "SUCESSO - CONTA: " << Account2.getAccountTested() << std::endl;
+                                break;
+        case TUAccount::FALHA  : std::cout << "FALHA   - CONTA" << std::endl;
+                                break;
+    }
+
+    std::cout << "\n";
+
+    switch(Board1.run()){
+        case TUAccount::SUCESSO: std::cout << "SUCESSO - CONTA: " << Board1.getBoardTested() << std::endl;
+                                break;
+        case TUAccount::FALHA  : std::cout << "FALHA   - CONTA" << std::endl;
+                                break;
+    }
+
+    switch(Board2.run()){
+        case TUAccount::SUCESSO: std::cout << "SUCESSO - CONTA: " << Board2.getBoardTested() << std::endl;
                                 break;
         case TUAccount::FALHA  : std::cout << "FALHA   - CONTA" << std::endl;
                                 break;

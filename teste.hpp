@@ -161,3 +161,38 @@ inline std::string TUAccount::getAccountTested() const{
     std::string text = "Conta com EMAIL: " + user_email + " NOME: " + user_name + " SENHA: " + user_password;
     return text;
 }
+
+
+class TUBoard {
+private:
+    std::string user_code;
+    std::string user_name;
+    std::string user_description;
+    int user_limit;
+
+    Board *board;
+    int estado;
+    void setUp();    
+    void tearDown(); 
+    void testSettings();  
+
+public:
+    TUBoard(
+        const std::string code,
+        const std::string name,
+        const std::string description,
+        const int limit) :
+      
+        user_code(code), user_name(name), user_description(description), user_limit(limit)
+        {}
+
+    const static int SUCESSO =  0;         
+    const static int FALHA   = -1;         
+    std::string getBoardTested() const;                            
+    int run();  
+};
+
+inline std::string TUBoard::getBoardTested() const{
+    std::string text = "Quadro com CODIGO: " + user_code + " NOME: " + user_name + " DESCRICAO: " + user_description + " LIMITE: " + std::to_string(user_limit);
+    return text;
+}

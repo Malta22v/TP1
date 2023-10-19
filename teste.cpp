@@ -192,3 +192,44 @@ int TUAccount::run(){
     return estado;
 }
 
+
+void TUBoard::setUp(){
+    board = new Board();
+    estado = SUCESSO;
+}
+
+void TUBoard::tearDown(){
+    delete board;
+}
+
+void TUBoard::testSettings(){
+
+    Code code;
+    Text name;    
+    Text description;    
+    Limit limit;
+
+
+    code.setValue(user_code);
+    name.setValue(user_name);
+    description.setValue(user_description);
+    limit.setValue(user_limit);
+
+    board->setCode(code);
+    board->setName(name);
+    board->setDescription(description);
+    board->setLimit(limit);
+
+    if( board->getCode()  != user_code ||
+        board->getName()  != user_name ||
+        board->getDescription()  != user_description ||
+        board->getLimit() != user_limit) {estado = FALHA;}
+}
+
+int TUBoard::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}
+

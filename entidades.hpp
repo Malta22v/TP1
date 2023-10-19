@@ -20,4 +20,24 @@ public:
 
 };
 
+class Board {
+private:
+    Code code;
+    Text name;    
+    Text description;    
+    Limit limit;
+
+public:
+    void setCode(const Code&);
+    void setName(const Text&);
+    void setDescription(const Text&);
+    void setLimit(const Limit&);
+
+    std::string getCode() const;
+    std::string getName() const;
+    std::string getDescription() const;
+    int getLimit() const;
+
+};
+
 #endif // ENTIDADES_HPP
