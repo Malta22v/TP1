@@ -106,6 +106,31 @@ int testLimit::run(){
     return estado;
 }
 
+void testCode::setUp(){
+    code = new Code();
+    estado = SUCESSO;
+}
+
+void testCode::tearDown(){
+    delete code;
+}
+
+void testCode::testSettings(){
+    try{
+        code->setValue(user_code);
+    } catch (const std::invalid_argument& e) {
+        // std::cout << e.what() << " ";
+        estado = FALHA;
+    }
+}
+
+int testCode::run(){
+    setUp();
+    testSettings();
+    tearDown();
+    return estado;
+}
+
 
 void TUAccount::setUp(){
     account = new Account();

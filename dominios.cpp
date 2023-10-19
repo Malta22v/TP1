@@ -227,3 +227,31 @@ void Limit::setValue(const int valueInput){
     validateLimit(valueInput);
     this->user_limit = valueInput;
 }
+
+
+const int Code::CODE_SIZE = 4;
+
+void Code::validateCode(const std::string& code) {
+    std::string errors;
+
+    if (code.size() != CODE_SIZE) {
+        errors += "CODIGO DEVE TER 4 CARACTERES";
+    }
+
+    for (int i = 0; i < 4; i++) {
+        if (i < 2 && !std::isupper(code[i])) 
+            errors += "CARACTER NA POSICAO " + std::to_string(i + 1) + " NAO E CARACTER MAISCULO\n";
+
+        if (i >= 2 && !std::isdigit(code[i]))
+            errors += "CARACTER NA POSICAO " + std::to_string(i + 1) + " NAO E NUMERO\n";
+    }
+
+    if(!errors.empty()) {
+        throw std::invalid_argument(errors);
+    }
+}
+
+void Code::setValue(const std::string& codeInput) {
+    validateCode(codeInput);
+    this->user_code = codeInput;
+}

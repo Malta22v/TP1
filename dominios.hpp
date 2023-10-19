@@ -76,4 +76,19 @@ inline int Limit::getValue() const {
     return user_limit;
 }
 
+
+class Code {
+    private:
+        static const int CODE_SIZE;
+        std::string user_code;
+        void validateCode(const std::string&);
+    public:
+        void setValue(const std::string&);
+        std::string getValue() const;
+};
+
+inline std::string Code::getValue() const {
+    return user_code;
+}
+
 #endif

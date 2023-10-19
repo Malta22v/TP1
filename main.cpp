@@ -21,6 +21,10 @@ std::vector<int> listLimit = {
     5, 10, 15, 20, 2, 3, 6, 11, 14
 };
 
+std::vector<std::string> listCode= {
+    "DD92", "CE23", "DO86", "Dx23", "DBd2", "Gh2L"
+};
+
 TUAccount Account1("joao@gmail.com", "Joao Victor", "3;bEd");
 TUAccount Account2("marcos@gmail.com", "Marcos", "3Ee;2");
 
@@ -77,6 +81,20 @@ int main() {
             case testLimit::SUCESSO: std::cout << "SUCESSO - LIMITE: " << testeD.getLimitTested() << std::endl;
                                     break;
             case testLimit::FALHA  : std::cout << "FALHA   - LIMITE: " << testeD.getLimitTested() << std::endl;
+                                    break;
+        }
+
+    }
+
+    std::cout << "\n";
+
+    for (const auto& code : listCode) {
+        testCode testeE(code);
+
+        switch(testeE.run()){
+            case testCode::SUCESSO: std::cout << "SUCESSO - SENHA: " << testeE.getCodeTested() << std::endl;
+                                    break;
+            case testCode::FALHA  : std::cout << "FALHA   - SENHA: " << testeE.getCodeTested() << std::endl;
                                     break;
         }
 

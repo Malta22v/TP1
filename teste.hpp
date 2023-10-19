@@ -89,6 +89,27 @@ inline int testLimit::getLimitTested(){
     return user_limit;
 }
 
+class testCode {
+private:  
+    Code *code;
+    std::string user_code;                         
+    int estado;
+    void setUp();    
+    void tearDown(); 
+    void testSettings();  
+
+public:
+    testCode(const std::string code) : user_code(code) {}
+    const static int SUCESSO =  0;         
+    const static int FALHA   = -1;         
+    std::string getCodeTested();                            
+    int run();                             
+};
+
+inline std::string testCode::getCodeTested(){
+    return user_code;
+}
+
 class TUAccount {
 private:
     std::string user_email;
